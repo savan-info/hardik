@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#333;
+}
+
+.date-box{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.date-box input{
+    padding:10px;
+    border:2px solid #007bff;
+    border-radius:8px;
+    font-size:16px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+th{
+    background:#007bff;
+    color:white;
+    padding:14px;
+}
+
+td{
+    text-align:center;
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+.present{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    margin-right:5px;
+}
+
+.absent{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.present:hover{
+    background:#1e7e34;
+}
+
+.absent:hover{
+    background:#bd2130;
+}
+
+.submit-btn{
+    display:block;
+    margin:25px auto 0;
+    background:#007bff;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    font-size:16px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    background:#0056b3;
+    transform:scale(1.05);
+}
+
+@media(max-width:700px){
+
+    table{
+        font-size:12px;
+    }
+
+    td{
+        padding:8px;
+    }
+
+    .present,
+    .absent{
+        padding:6px 10px;
+        font-size:12px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Attendance System</h1>
+
+<!-- Auto Date -->
+
+<div class="date-box">
+    <input type="date" id="date">
+</div>
+
+<table>
+
+<thead>
+<tr>
+    <th>No.</th>
+    <th>Student Name</th>
+    <th>Attendance</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+    <td>1</td>
+    <td>THAKOR HARDIKKUMAR KANUBHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>GOSWAMI MAYURPURI GANGESHPURI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>3</td>
+    <td>CHAUHAN MANITKUMAR PRAHALADBHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>4</td>
+    <td>CHAUHAN PRUTHVISING RAJUBHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>5</td>
+    <td>CHAUHAN SAVANKUMAR BHIKHABHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>6</td>
+    <td>MER DINESHBHAI RAMESHBHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>7</td>
+    <td>RATHOD CHETANBHAI MELABHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>8</td>
+    <td>PARMAR DHRUVKUMAR VISHNUBHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>9</td>
+    <td>GOHIL SAHILBHAI NATUBHAI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>10</td>
+    <td>GOSWAMI YASHPALGIRI PRAVINGIRI</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>11</td>
+    <td>SOLANKI PRADIPSINH MAHESHKUMAR</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>12</td>
+    <td>SOLANKI YUVRAJSINH MAHIPATSINH</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+<tr>
+    <td>13</td>
+    <td>CHAUHAN PRUTHVIRAJSINH SANJAYSINH</td>
+    <td>
+        <button class="present" onclick="markPresent(this)">Present</button>
+        <button class="absent" onclick="markAbsent(this)">Absent</button>
+    </td>
+</tr>
+
+</tbody>
+</table>
+
+<button class="submit-btn" onclick="submitAttendance()">
+    Submit Attendance
+</button>
+
+</div>
+
+<script>
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbwDzt9EDzyArIHjuMbqI6JblpoGXXKWDMh6B9PXmi92SLEHpNhDiYdhTpsVG4yQVQe_2g/exec";
+
+// Auto Current Date
+
+let today = new Date().toISOString().split('T')[0];
+document.getElementById("date").value = today;
+
+// Present Button
+
+function markPresent(btn){
+
+    let row = btn.parentElement.parentElement;
+
+    row.style.background = "#d4edda";
+
+    row.setAttribute("data-status","Present");
+}
+
+// Absent Button
+
+function markAbsent(btn){
+
+    let row = btn.parentElement.parentElement;
+
+    row.style.background = "#f8d7da";
+
+    row.setAttribute("data-status","Absent");
+}
+
+// Submit Attendance
+
+async function submitAttendance(){
+
+    let rows = document.querySelectorAll("tbody tr");
+
+    for(let row of rows){
+
+        let name = row.cells[1].innerText;
+
+        let status = row.getAttribute("data-status") || "Not Marked";
+
+        let date = document.getElementById("date").value;
+
+        await fetch(scriptURL,{
+
+            method:"POST",
+
+           headers:{
+    "Content-Type":"text/plain"
+},
+
+            body:JSON.stringify({
+                date:date,
+                name:name,
+                status:status
+            })
+
+        });
+
+    }
+
+    alert("All Attendance Submitted Successfully!");
+}
+
+</script>
+
+</body>
+</html>
